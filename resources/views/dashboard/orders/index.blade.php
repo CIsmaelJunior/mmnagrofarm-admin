@@ -1,6 +1,47 @@
 @extends('dashboard.layouts.master')
 
 @section('content')
+<style>
+/* Amélioration des boutons d'actions */
+.actions-buttons {
+    gap: 0.25rem;
+}
+
+.actions-buttons .btn {
+    font-size: 0.75rem;
+    min-width: 60px;
+}
+
+.actions-buttons .btn i {
+    font-size: 0.7rem;
+}
+
+/* Responsive pour les boutons */
+@media (max-width: 768px) {
+    .actions-buttons .btn span {
+        display: none !important;
+    }
+
+    .actions-buttons .btn {
+        min-width: 35px;
+        padding: 0.25rem 0.5rem;
+    }
+}
+
+/* Amélioration du modal */
+.modal-lg {
+    max-width: 800px;
+}
+
+.product-item {
+    transition: all 0.2s ease;
+}
+
+.product-item:hover {
+    background-color: #f8f9fa !important;
+    transform: translateY(-1px);
+}
+</style>
 <!-- Statistiques des commandes -->
 <div class="row mb-4">
     <div class="col-lg-3 col-sm-6 mb-xl-0 mb-4">
@@ -134,6 +175,7 @@
                             <tr>
                                 <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Commande</th>
                                 <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Client</th>
+                                <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Type</th>
                                 <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Produits</th>
                                 <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Montant</th>
                                 <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Statut</th>
@@ -162,6 +204,11 @@
                                     </div>
                                 </td>
                                 <td class="align-middle text-center text-sm">
+                                    <span class="badge badge-sm bg-gradient-{{ $commande->type_couleur }}">
+                                        {{ $commande->type_commande }}
+                                    </span>
+                                </td>
+                                <td class="align-middle text-center text-sm">
                                     <span class="text-xs font-weight-bold">{{ $commande->total_articles }} articles</span>
                                     <br>
                                     <small class="text-secondary">{{ count($commande->produits) }} produits</small>
@@ -184,22 +231,36 @@
                                     <small class="text-secondary">{{ $commande->created_at->format('H:i') }}</small>
                                 </td>
                                 <td class="align-middle">
-                                    <div class="d-flex justify-content-center gap-1">
-                                        <a href="{{ route('orders.show', $commande->id) }}" class="btn btn-outline-info btn-sm px-2 py-1" data-bs-toggle="tooltip" title="Voir les détails">
-                                            <i class="fas fa-eye text-xs"></i>
+                                    <div class="d-flex justify-content-center actions-buttons flex-wrap">
+                                        <a href="{{ route('orders.show', $commande->id) }}" class="btn btn-outline-info btn-sm px-3 py-1" data-bs-toggle="tooltip" title="Voir les détails de la commande">
+                                            <i class="fas fa-eye me-1"></i>
+                                            <span class="d-none d-md-inline">Voir</span>
                                         </a>
-                                        <button type="button" class="btn btn-outline-warning btn-sm px-2 py-1" data-bs-toggle="tooltip" title="Modifier le statut" data-bs-toggle="modal" data-bs-target="#statusModal{{ $commande->id }}">
-                                            <i class="fas fa-edit text-xs"></i>
-                                        </button>
-                                        <button type="button" class="btn btn-outline-danger btn-sm px-2 py-1" data-bs-toggle="modal" data-bs-target="#deleteModal{{ $commande->id }}" title="Supprimer">
-                                            <i class="fas fa-trash text-xs"></i>
+                                        @if($commande->is_devis)
+                                            <a href="{{ route('orders.edit', $commande->id) }}" class="btn btn-outline-success btn-sm px-3 py-1" data-bs-toggle="tooltip" title="Traiter le devis et fixer le prix">
+                                                <i class="fas fa-calculator me-1"></i>
+                                                <span class="d-none d-md-inline">Traiter</span>
+                                            </a>
+                                        @else
+                                            <button type="button" class="btn btn-outline-warning btn-sm px-3 py-1" data-bs-toggle="tooltip" title="Modifier le statut de la commande" data-bs-toggle="modal" data-bs-target="#statusModal{{ $commande->id }}">
+                                                <i class="fas fa-edit me-1"></i>
+                                                <span class="d-none d-md-inline">Modifier</span>
+                                            </button>
+                                        @endif
+                                        <a href="{{ route('orders.pdf', $commande->id) }}" class="btn btn-outline-danger btn-sm px-3 py-1" target="_blank" data-bs-toggle="tooltip" title="Télécharger le PDF">
+                                            <i class="fas fa-file-pdf me-1"></i>
+                                            <span class="d-none d-md-inline">PDF</span>
+                                        </a>
+                                        <button type="button" class="btn btn-outline-danger btn-sm px-3 py-1" data-bs-toggle="modal" data-bs-target="#deleteModal{{ $commande->id }}" title="Supprimer la commande">
+                                            <i class="fas fa-trash me-1"></i>
+                                            <span class="d-none d-md-inline">Supprimer</span>
                                         </button>
                                     </div>
                                 </td>
                             </tr>
                             @empty
                             <tr>
-                                <td colspan="7" class="text-center py-4">
+                                <td colspan="8" class="text-center py-4">
                                     <div class="d-flex flex-column align-items-center">
                                         <i class="fas fa-shopping-cart text-secondary mb-2" style="font-size: 2rem;"></i>
                                         <h6 class="text-secondary">Aucune commande trouvée</h6>
@@ -264,4 +325,16 @@
     </div>
 </div>
 @endforeach
+
+
+<script>
+// Initialiser les tooltips Bootstrap
+document.addEventListener('DOMContentLoaded', function() {
+    // Initialiser tous les tooltips (Bootstrap 5)
+    var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
+    var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+        return new bootstrap.Tooltip(tooltipTriggerEl);
+    });
+});
+</script>
 @endsection

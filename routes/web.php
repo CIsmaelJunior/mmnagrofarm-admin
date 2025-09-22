@@ -25,6 +25,9 @@ Route::prefix('products')->name('products.')->group(function () {
 Route::prefix('orders')->name('orders.')->group(function () {
     Route::get('/', [App\Http\Controllers\CommandeController::class, 'index'])->name('index');
     Route::get('/{id}', [App\Http\Controllers\CommandeController::class, 'show'])->name('show');
+    Route::get('/{id}/edit', [App\Http\Controllers\CommandeController::class, 'edit'])->name('edit');
+    Route::get('/{id}/pdf', [App\Http\Controllers\CommandeController::class, 'generatePdf'])->name('pdf');
+    Route::put('/{id}', [App\Http\Controllers\CommandeController::class, 'update'])->name('update');
     Route::delete('/{id}', [App\Http\Controllers\CommandeController::class, 'destroy'])->name('destroy');
 });
 
@@ -52,3 +55,4 @@ Route::prefix('settings')->name('settings.')->group(function () {
     Route::get('/notifications', [App\Http\Controllers\SettingsController::class, 'notifications'])->name('notifications');
     Route::put('/notifications', [App\Http\Controllers\SettingsController::class, 'updateNotifications'])->name('notifications.update');
 });
+

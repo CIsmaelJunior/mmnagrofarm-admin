@@ -34,12 +34,12 @@
       </div>
     </nav>
     <!-- End Navbar -->
-    
-    
+
+
     <div class="container-fluid py-4">
-      
+
       @yield('content')
-      
+
       <footer class="footer pt-3  ">
         <div class="container-fluid">
           @include('dashboard.partials.footer')
@@ -55,9 +55,11 @@
   <script src="{{ asset('adm/js/plugins/smooth-scrollbar.min.js') }}"></script>
   <script src="{{ asset('adm/js/plugins/chartjs.min.js') }}"></script>
   <script>
-    var ctx = document.getElementById("chart-bars").getContext("2d");
+    var ctx = document.getElementById("chart-bars");
+    if (ctx) {
+      ctx = ctx.getContext("2d");
 
-    new Chart(ctx, {
+      new Chart(ctx, {
       type: "bar",
       data: {
         labels: ["Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
@@ -120,9 +122,12 @@
         },
       },
     });
+    }
 
 
-    var ctx2 = document.getElementById("chart-line").getContext("2d");
+    var ctx2 = document.getElementById("chart-line");
+    if (ctx2) {
+      ctx2 = ctx2.getContext("2d");
 
     var gradientStroke1 = ctx2.createLinearGradient(0, 230, 0, 50);
 
@@ -223,6 +228,7 @@
         },
       },
     });
+    }
   </script>
   <script>
     var win = navigator.platform.indexOf('Win') > -1;
@@ -236,7 +242,7 @@
   <!-- Github buttons -->
   <script async defer src="https://buttons.github.io/buttons.js"></script>
   <!-- Control Center for Soft Dashboard: parallax effects, scripts for the example pages etc -->
-  <script src="../assets/js/soft-ui-dashboard.min.js?v=1.0.3"></script>
+  <script src="{{ asset('adm/js/soft-ui-dashboard.min.js?v=1.0.3') }}"></script>
 </body>
 
 </html>
