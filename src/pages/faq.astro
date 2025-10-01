@@ -1,0 +1,384 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<Layout title="FAQ - MMB AgroFarm" description="Trouvez rapidement les réponses à vos questions sur nos produits cultivés en Côte d'Ivoire, nos services et nos conditions de vente.">
+  <Header />
+  
+  <!-- Hero Section -->
+  <section class="pt-32 pb-16 bg-gradient-to-br from-green-50 to-green-100">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center">
+        <h1 class="text-4xl lg:text-5xl font-bold text-gray-900 mb-6">
+          Questions Fréquentes
+        </h1>
+        <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+          Retrouvez les réponses aux questions les plus courantes 
+          sur nos produits et services.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="py-16 lg:py-24">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="max-w-4xl mx-auto">
+        <!-- Navigation des catégories -->
+        <div class="flex flex-wrap justify-center gap-4 mb-12">
+          <button
+            class="categorie-btn px-6 py-3 rounded-full text-sm font-medium transition-all duration-200"
+            data-categorie="produits"
+            data-active="true"
+          >
+            Produits
+          </button>
+          <button
+            class="categorie-btn px-6 py-3 rounded-full text-sm font-medium transition-all duration-200"
+            data-categorie="commandes"
+            data-active="false"
+          >
+            Commandes
+          </button>
+          <button
+            class="categorie-btn px-6 py-3 rounded-full text-sm font-medium transition-all duration-200"
+            data-categorie="livraison"
+            data-active="false"
+          >
+            Livraison
+          </button>
+          <button
+            class="categorie-btn px-6 py-3 rounded-full text-sm font-medium transition-all duration-200"
+            data-categorie="entreprise"
+            data-active="false"
+          >
+            Entreprise
+          </button>
+        </div>
+
+        <!-- Questions par catégorie -->
+        <div class="space-y-8">
+          <!-- Catégorie Produits -->
+          <div class="faq-categorie" data-categorie="produits">
+            <div class="space-y-6">
+              <div class="faq-item bg-white rounded-lg shadow-lg overflow-hidden">
+                <button class="faq-question w-full px-6 py-4 text-left flex justify-between items-center hover:bg-gray-50 transition-colors duration-200">
+                  <span class="font-semibold text-gray-900">Quels types de produits proposez-vous ?</span>
+                  <svg class="w-5 h-5 text-gray-500 transform transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                  </svg>
+                </button>
+                <div class="faq-answer px-6 pb-4 hidden">
+                  <p class="text-gray-600">
+                    Nous cultivons une large gamme de fruits et légumes sur notre exploitation en Côte d'Ivoire : 
+                    oignons, gombos, tomates, aubergines, piments, choux, concombres, carottes, haricots, pastèques et melons. 
+                    Tous nos produits sont cultivés avec passion et sélectionnés pour leur qualité et leur fraîcheur.
+                  </p>
+                </div>
+              </div>
+
+              <div class="faq-item bg-white rounded-lg shadow-lg overflow-hidden">
+                <button class="faq-question w-full px-6 py-4 text-left flex justify-between items-center hover:bg-gray-50 transition-colors duration-200">
+                  <span class="font-semibold text-gray-900">Comment garantissez-vous la qualité de vos produits ?</span>
+                  <svg class="w-5 h-5 text-gray-500 transform transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                  </svg>
+                </button>
+                <div class="faq-answer px-6 pb-4 hidden">
+                  <p class="text-gray-600">
+                    Nous effectuons un contrôle qualité strict à chaque étape, de la plantation à la récolte. 
+                    Nos produits sont cultivés selon les meilleures pratiques agricoles et respectent 
+                    les standards de qualité les plus exigeants.
+                  </p>
+                </div>
+              </div>
+
+              <div class="faq-item bg-white rounded-lg shadow-lg overflow-hidden">
+                <button class="faq-question w-full px-6 py-4 text-left flex justify-between items-center hover:bg-gray-50 transition-colors duration-200">
+                  <span class="font-semibold text-gray-900">Vos produits sont-ils bio ?</span>
+                  <svg class="w-5 h-5 text-gray-500 transform transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                  </svg>
+                </button>
+                <div class="faq-answer px-6 pb-4 hidden">
+                  <p class="text-gray-600">
+                    Nous proposons une sélection de produits bio selon disponibilité. Contactez-nous pour connaître 
+                    nos produits bio disponibles et nous pouvons également vous proposer des produits conventionnels 
+                    de haute qualité cultivés avec des méthodes respectueuses de l'environnement.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Catégorie Commandes -->
+          <div class="faq-categorie hidden" data-categorie="commandes">
+            <div class="space-y-6">
+              <div class="faq-item bg-white rounded-lg shadow-lg overflow-hidden">
+                <button class="faq-question w-full px-6 py-4 text-left flex justify-between items-center hover:bg-gray-50 transition-colors duration-200">
+                  <span class="font-semibold text-gray-900">Comment passer une commande ?</span>
+                  <svg class="w-5 h-5 text-gray-500 transform transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                  </svg>
+                </button>
+                <div class="faq-answer px-6 pb-4 hidden">
+                  <p class="text-gray-600">
+                    Pour passer une commande, contactez-nous par téléphone, email ou via notre formulaire de contact. 
+                    Notre équipe commerciale vous accompagnera dans votre projet et vous proposera un devis personnalisé.
+                  </p>
+                </div>
+              </div>
+
+              <div class="faq-item bg-white rounded-lg shadow-lg overflow-hidden">
+                <button class="faq-question w-full px-6 py-4 text-left flex justify-between items-center hover:bg-gray-50 transition-colors duration-200">
+                  <span class="font-semibold text-gray-900">Y a-t-il des quantités minimales ?</span>
+                  <svg class="w-5 h-5 text-gray-500 transform transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                  </svg>
+                </button>
+                <div class="faq-answer px-6 pb-4 hidden">
+                  <p class="text-gray-600">
+                    Nous adaptons nos conditionnements à vos besoins, du petit détail au gros volume. 
+                    Contactez-nous pour discuter de vos besoins spécifiques et nous trouverons la solution 
+                    la plus adaptée.
+                  </p>
+                </div>
+              </div>
+
+              <div class="faq-item bg-white rounded-lg shadow-lg overflow-hidden">
+                <button class="faq-question w-full px-6 py-4 text-left flex justify-between items-center hover:bg-gray-50 transition-colors duration-200">
+                  <span class="font-semibold text-gray-900">Acceptez-vous les commandes urgentes ?</span>
+                  <svg class="w-5 h-5 text-gray-500 transform transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                  </svg>
+                </button>
+                <div class="faq-answer px-6 pb-4 hidden">
+                  <p class="text-gray-600">
+                    Oui, nous pouvons traiter les commandes urgentes selon nos disponibilités. 
+                    Contactez-nous directement par téléphone pour les demandes urgentes.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Catégorie Livraison -->
+          <div class="faq-categorie hidden" data-categorie="livraison">
+            <div class="space-y-6">
+              <div class="faq-item bg-white rounded-lg shadow-lg overflow-hidden">
+                <button class="faq-question w-full px-6 py-4 text-left flex justify-between items-center hover:bg-gray-50 transition-colors duration-200">
+                  <span class="font-semibold text-gray-900">Quels sont vos délais de livraison ?</span>
+                  <svg class="w-5 h-5 text-gray-500 transform transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                  </svg>
+                </button>
+                <div class="faq-answer px-6 pb-4 hidden">
+                  <p class="text-gray-600">
+                    Nos délais de livraison varient selon votre localisation et la taille de votre commande. 
+                    En général, nous livrons dans un délai de 24 à 48h en Côte d'Ivoire. 
+                    Contactez-nous pour un devis personnalisé.
+                  </p>
+                </div>
+              </div>
+
+              <div class="faq-item bg-white rounded-lg shadow-lg overflow-hidden">
+                <button class="faq-question w-full px-6 py-4 text-left flex justify-between items-center hover:bg-gray-50 transition-colors duration-200">
+                  <span class="font-semibold text-gray-900">Livrez-vous partout en Côte d'Ivoire ?</span>
+                  <svg class="w-5 h-5 text-gray-500 transform transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                  </svg>
+                </button>
+                <div class="faq-answer px-6 pb-4 hidden">
+                  <p class="text-gray-600">
+                    Oui, nous livrons dans toute la Côte d'Ivoire. Les délais et coûts de livraison 
+                    varient selon la distance. Nous proposons également des livraisons dans la sous-région.
+                  </p>
+                </div>
+              </div>
+
+              <div class="faq-item bg-white rounded-lg shadow-lg overflow-hidden">
+                <button class="faq-question w-full px-6 py-4 text-left flex justify-between items-center hover:bg-gray-50 transition-colors duration-200">
+                  <span class="font-semibold text-gray-900">Comment garantissez-vous la fraîcheur pendant le transport ?</span>
+                  <svg class="w-5 h-5 text-gray-500 transform transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                  </svg>
+                </button>
+                <div class="faq-answer px-6 pb-4 hidden">
+                  <p class="text-gray-600">
+                    Nos produits sont récoltés à maturité optimale et livrés rapidement pour garantir 
+                    la fraîcheur. Nous utilisons des véhicules adaptés et un emballage approprié 
+                    pour préserver la qualité de nos produits pendant le transport.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Catégorie Entreprise -->
+          <div class="faq-categorie hidden" data-categorie="entreprise">
+            <div class="space-y-6">
+              <div class="faq-item bg-white rounded-lg shadow-lg overflow-hidden">
+                <button class="faq-question w-full px-6 py-4 text-left flex justify-between items-center hover:bg-gray-50 transition-colors duration-200">
+                  <span class="font-semibold text-gray-900">Quels sont vos horaires d'ouverture ?</span>
+                  <svg class="w-5 h-5 text-gray-500 transform transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                  </svg>
+                </button>
+                <div class="faq-answer px-6 pb-4 hidden">
+                  <p class="text-gray-600">
+                    Nous sommes ouverts du lundi au vendredi de 6h00 à 14h00, et le samedi de 6h00 à 12h00. 
+                    Nous sommes fermés le dimanche.
+                  </p>
+                </div>
+              </div>
+
+              <div class="faq-item bg-white rounded-lg shadow-lg overflow-hidden">
+                <button class="faq-question w-full px-6 py-4 text-left flex justify-between items-center hover:bg-gray-50 transition-colors duration-200">
+                  <span class="font-semibold text-gray-900">Travaillez-vous avec des restaurants et des distributeurs ?</span>
+                  <svg class="w-5 h-5 text-gray-500 transform transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                  </svg>
+                </button>
+                <div class="faq-answer px-6 pb-4 hidden">
+                  <p class="text-gray-600">
+                    Oui, nous travaillons avec des restaurants, des distributeurs, des épiceries fines 
+                    et d'autres professionnels de l'alimentation. Nous adaptons nos services 
+                    aux besoins spécifiques de chaque client.
+                  </p>
+                </div>
+              </div>
+
+              <div class="faq-item bg-white rounded-lg shadow-lg overflow-hidden">
+                <button class="faq-question w-full px-6 py-4 text-left flex justify-between items-center hover:bg-gray-50 transition-colors duration-200">
+                  <span class="font-semibold text-gray-900">Proposez-vous des partenariats ?</span>
+                  <svg class="w-5 h-5 text-gray-500 transform transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                  </svg>
+                </button>
+                <div class="faq-answer px-6 pb-4 hidden">
+                  <p class="text-gray-600">
+                    Oui, nous sommes ouverts aux partenariats avec des entreprises partageant nos valeurs 
+                    de qualité et de durabilité. Contactez-nous pour discuter des opportunités de collaboration.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="py-16 bg-gray-50">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <h2 class="text-3xl font-bold text-gray-900 mb-6">
+        Vous n'avez pas trouvé votre réponse ?
+      </h2>
+      <p class="text-lg text-gray-600 mb-8 max-w-2xl mx-auto">
+        Notre équipe est à votre disposition pour répondre à toutes vos questions 
+        et vous accompagner dans vos projets.
+      </p>
+      <a
+        href="/contact"
+        class="inline-flex items-center justify-center px-8 py-4 text-lg font-semibold text-white bg-green-600 rounded-lg hover:bg-green-700 transition-colors duration-200 shadow-lg hover:shadow-xl"
+      >
+        Nous contacter
+        <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+        </svg>
+      </a>
+    </div>
+  </section>
+
+  <Footer />
+</Layout>
+
+<style>
+  .categorie-btn {
+    background-color: #f3f4f6;
+    color: #6b7280;
+    border: 2px solid transparent;
+  }
+
+  .categorie-btn[data-active="true"] {
+    background-color: #059669;
+    color: white;
+    border-color: #059669;
+  }
+
+  .categorie-btn:hover {
+    background-color: #059669;
+    color: white;
+    border-color: #059669;
+  }
+
+  .faq-categorie {
+    transition: all 0.3s ease;
+  }
+
+  .faq-question.active svg {
+    transform: rotate(180deg);
+  }
+</style>
+
+<script>
+  // Gestion des catégories FAQ
+  const categorieBtns = document.querySelectorAll('.categorie-btn');
+  const faqCategories = document.querySelectorAll('.faq-categorie');
+
+  categorieBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const categorie = btn.getAttribute('data-categorie');
+      
+      // Mise à jour des boutons
+      categorieBtns.forEach(b => {
+        b.setAttribute('data-active', 'false');
+        b.classList.remove('bg-green-600', 'text-white');
+        b.classList.add('bg-gray-100', 'text-gray-600');
+      });
+
+      btn.setAttribute('data-active', 'true');
+      btn.classList.remove('bg-gray-100', 'text-gray-600');
+      btn.classList.add('bg-green-600', 'text-white');
+
+      // Affichage de la catégorie
+      faqCategories.forEach(cat => {
+        if (cat.getAttribute('data-categorie') === categorie) {
+          cat.classList.remove('hidden');
+        } else {
+          cat.classList.add('hidden');
+        }
+      });
+    });
+  });
+
+  // Gestion des questions/réponses
+  const faqQuestions = document.querySelectorAll('.faq-question');
+
+  faqQuestions.forEach(question => {
+    question.addEventListener('click', () => {
+      const answer = question.nextElementSibling;
+      const isActive = question.classList.contains('active');
+
+      // Fermer toutes les autres réponses
+      faqQuestions.forEach(q => {
+        if (q !== question) {
+          q.classList.remove('active');
+          q.nextElementSibling.classList.add('hidden');
+        }
+      });
+
+      // Toggle de la réponse actuelle
+      if (isActive) {
+        question.classList.remove('active');
+        answer.classList.add('hidden');
+      } else {
+        question.classList.add('active');
+        answer.classList.remove('hidden');
+      }
+    });
+  });
+</script>

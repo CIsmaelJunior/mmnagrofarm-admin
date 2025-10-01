@@ -1,0 +1,93 @@
+---
+import type { Produit } from '../data/produits';
+
+interface Props {
+  produit: Produit;
+}
+
+const { produit } = Astro.props;
+---
+
+<article class="bg-white rounded-2xl shadow-2xl hover:shadow-[0_25px_50px_-12px_rgba(0,0,0,0.25)] transition-all duration-500 overflow-hidden group border border-gray-100">
+  <!-- Image du produit -->
+  <div class="relative overflow-hidden aspect-square bg-white flex items-center justify-center">
+    <img
+      src={produit.image}
+      alt={`${produit.nom} ${produit.variete}`}
+      class="w-full h-full object-contain p-4 group-hover:scale-110 transition-transform duration-500"
+      loading="lazy"
+    />
+    <div class="absolute inset-0 bg-gradient-to-t from-black/10 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+    
+    <!-- Badge de catégorie -->
+    <div class="absolute top-3 left-3">
+      <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-white/90 backdrop-blur-sm text-gray-700 shadow-sm">
+        {['pasteque-baby-doll', 'melon-galia'].includes(produit.slug) ? '🍎 Fruit' : '🥬 Légume'}
+      </span>
+    </div>
+  </div>
+
+  <!-- Contenu -->
+  <div class="p-6">
+    <div class="mb-4">
+      <h3 class="text-xl font-bold text-gray-900 mb-2 leading-tight">
+        {produit.nom}
+      </h3>
+      <p class="text-sm text-green-600 font-semibold bg-green-50 px-3 py-1 rounded-full inline-block">
+        {produit.variete}
+      </p>
+    </div>
+
+    <!-- Description masquée
+    <p class="text-gray-600 text-sm mb-5 line-clamp-3 leading-relaxed">
+      {produit.description}
+    </p>
+    -->
+
+    <!-- Origine -->
+    <div class="flex items-center text-sm text-gray-600 mb-4 p-3 bg-gray-50 rounded-lg">
+      <svg class="w-4 h-4 mr-3 text-green-500 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+      </svg>
+      <span class="font-medium">{produit.origine}</span>
+    </div>
+
+    <!-- Conditionnement -->
+    <div class="mb-5">
+      <p class="text-xs text-gray-500 mb-3 font-medium uppercase tracking-wide">Conditionnement disponible :</p>
+      <div class="flex flex-wrap gap-2">
+        {produit.conditionnement.slice(0, 3).map((cond) => (
+          <span class="inline-block px-3 py-1.5 text-xs bg-green-100 text-green-800 rounded-lg font-medium border border-green-200">
+            {cond}
+          </span>
+        ))}
+        {produit.conditionnement.length > 3 && (
+          <span class="inline-block px-3 py-1.5 text-xs bg-gray-100 text-gray-600 rounded-lg font-medium border border-gray-200">
+            +{produit.conditionnement.length - 3} autres
+          </span>
+        )}
+      </div>
+    </div>
+
+    <!-- Bouton -->
+    <a
+      href={`/produits/${produit.slug}`}
+      class="inline-flex items-center justify-center w-full px-6 py-3 text-sm font-semibold text-white bg-gradient-to-r from-green-600 to-emerald-600 rounded-xl hover:from-green-700 hover:to-emerald-700 transition-all duration-300 group-hover:shadow-lg transform group-hover:scale-[1.02]"
+    >
+      Voir le produit
+      <svg class="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+      </svg>
+    </a>
+  </div>
+</article>
+
+<style>
+  .line-clamp-3 {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+</style>

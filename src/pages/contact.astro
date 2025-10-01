@@ -1,0 +1,535 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<Layout title="Contact - MMB AgroFarm" description="Contactez MMB AgroFarm pour vos besoins en fruits et légumes cultivés en Côte d'Ivoire. Notre équipe est à votre disposition pour répondre à toutes vos questions.">
+  <Header />
+  
+  <!-- Hero Section Amélioré -->
+  <section class="relative pt-32 pb-20 bg-gradient-to-br from-green-50 via-green-100 to-yellow-50 overflow-hidden">
+    <!-- Éléments décoratifs -->
+    <div class="absolute inset-0">
+      <div class="absolute top-20 left-10 w-20 h-20 bg-green-200 rounded-full opacity-20 animate-pulse"></div>
+      <div class="absolute top-40 right-20 w-16 h-16 bg-yellow-200 rounded-full opacity-30 animate-bounce"></div>
+      <div class="absolute bottom-20 left-1/4 w-12 h-12 bg-green-300 rounded-full opacity-25 animate-ping"></div>
+    </div>
+    
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div class="text-center max-w-4xl mx-auto">
+        <div class="inline-flex items-center px-4 py-2 bg-green-100 rounded-full border border-green-200 mb-8 animate-fade-in">
+          <span class="w-2 h-2 bg-green-500 rounded-full mr-2 animate-pulse"></span>
+          <span class="text-sm font-medium text-green-700">Contactez-nous</span>
+        </div>
+        
+        <h1 class="text-5xl lg:text-6xl font-bold text-gray-900 mb-6 leading-tight animate-slide-up">
+          Partenariat
+          <span class="text-green-600">grossistes</span>
+        </h1>
+        
+        <p class="text-xl lg:text-2xl text-gray-600 max-w-3xl mx-auto leading-relaxed animate-slide-up-delay">
+          Rejoignez notre réseau de grossistes et bénéficiez de conditions privilégiées 
+          pour la distribution de nos produits agricoles de qualité.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Formulaire et Informations -->
+  <section class="py-20 lg:py-32 bg-white">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-16">
+        <!-- Formulaire de contact amélioré -->
+        <div class="lg:order-2">
+          <div class="bg-white rounded-2xl shadow-2xl p-8 lg:p-12 border border-gray-100">
+            <div class="text-center mb-8">
+              <h2 class="text-3xl lg:text-4xl font-bold text-gray-900 mb-4">
+                Envoyez-nous un message
+              </h2>
+              <p class="text-gray-600">
+                Remplissez le formulaire ci-dessous et nous vous répondrons dans les plus brefs délais.
+              </p>
+            </div>
+            
+            <form class="space-y-6" id="contact-form">
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                <div class="group">
+                  <label for="prenom" class="block text-sm font-semibold text-gray-700 mb-3 group-focus-within:text-green-600 transition-colors">
+                    Prénom *
+                  </label>
+                  <input
+                    type="text"
+                    id="prenom"
+                    name="prenom"
+                    required
+                    class="w-full px-4 py-4 border-2 border-gray-200 rounded-xl focus:ring-4 focus:ring-green-100 focus:border-green-500 transition-all duration-300 bg-gray-50 focus:bg-white"
+                    placeholder="Votre prénom"
+                  />
+                </div>
+                
+                <div class="group">
+                  <label for="nom" class="block text-sm font-semibold text-gray-700 mb-3 group-focus-within:text-green-600 transition-colors">
+                    Nom *
+                  </label>
+                  <input
+                    type="text"
+                    id="nom"
+                    name="nom"
+                    required
+                    class="w-full px-4 py-4 border-2 border-gray-200 rounded-xl focus:ring-4 focus:ring-green-100 focus:border-green-500 transition-all duration-300 bg-gray-50 focus:bg-white"
+                    placeholder="Votre nom"
+                  />
+                </div>
+              </div>
+
+              <div class="group">
+                <label for="email" class="block text-sm font-semibold text-gray-700 mb-3 group-focus-within:text-green-600 transition-colors">
+                  Email *
+                </label>
+                <input
+                  type="email"
+                  id="email"
+                  name="email"
+                  required
+                  class="w-full px-4 py-4 border-2 border-gray-200 rounded-xl focus:ring-4 focus:ring-green-100 focus:border-green-500 transition-all duration-300 bg-gray-50 focus:bg-white"
+                  placeholder="votre.email@exemple.com"
+                />
+              </div>
+
+              <div class="group">
+                <label for="telephone" class="block text-sm font-semibold text-gray-700 mb-3 group-focus-within:text-green-600 transition-colors">
+                  Téléphone
+                </label>
+                <input
+                  type="tel"
+                  id="telephone"
+                  name="telephone"
+                  class="w-full px-4 py-4 border-2 border-gray-200 rounded-xl focus:ring-4 focus:ring-green-100 focus:border-green-500 transition-all duration-300 bg-gray-50 focus:bg-white"
+                  placeholder="+225 07 20 20 05 06"
+                />
+              </div>
+
+              <div class="group">
+                <label for="entreprise" class="block text-sm font-semibold text-gray-700 mb-3 group-focus-within:text-green-600 transition-colors">
+                  Entreprise
+                </label>
+                <input
+                  type="text"
+                  id="entreprise"
+                  name="entreprise"
+                  class="w-full px-4 py-4 border-2 border-gray-200 rounded-xl focus:ring-4 focus:ring-green-100 focus:border-green-500 transition-all duration-300 bg-gray-50 focus:bg-white"
+                  placeholder="Nom de votre entreprise"
+                />
+              </div>
+
+              <div class="group">
+                <label for="sujet" class="block text-sm font-semibold text-gray-700 mb-3 group-focus-within:text-green-600 transition-colors">
+                  Sujet *
+                </label>
+                <select
+                  id="sujet"
+                  name="sujet"
+                  required
+                  class="w-full px-4 py-4 border-2 border-gray-200 rounded-xl focus:ring-4 focus:ring-green-100 focus:border-green-500 transition-all duration-300 bg-gray-50 focus:bg-white"
+                >
+                  <option value="">Sélectionnez un sujet</option>
+                  <option value="devis">Demande de devis</option>
+                  <option value="commande">Commande</option>
+                  <option value="information">Demande d'information</option>
+                  <option value="partenariat">Partenariat</option>
+                  <option value="autre">Autre</option>
+                </select>
+              </div>
+
+              <div class="group">
+                <label for="message" class="block text-sm font-semibold text-gray-700 mb-3 group-focus-within:text-green-600 transition-colors">
+                  Message *
+                </label>
+                <textarea
+                  id="message"
+                  name="message"
+                  rows="6"
+                  required
+                  class="w-full px-4 py-4 border-2 border-gray-200 rounded-xl focus:ring-4 focus:ring-green-100 focus:border-green-500 transition-all duration-300 bg-gray-50 focus:bg-white resize-none"
+                  placeholder="Décrivez votre demande en détail..."
+                ></textarea>
+              </div>
+
+              <div class="flex items-start space-x-3 p-4 bg-green-50 rounded-xl border border-green-200">
+                <input
+                  type="checkbox"
+                  id="consentement"
+                  name="consentement"
+                  required
+                  class="mt-1 w-5 h-5 text-green-600 border-gray-300 rounded focus:ring-green-500 focus:ring-2"
+                />
+                <label for="consentement" class="text-sm text-gray-700">
+                  J'accepte que mes données soient utilisées pour traiter ma demande. 
+                  <a href="/politique-confidentialite" class="text-green-600 hover:text-green-700 underline font-medium">
+                    Politique de confidentialité
+                  </a>
+                </label>
+              </div>
+
+              <button
+                type="submit"
+                class="w-full group inline-flex items-center justify-center px-8 py-4 text-lg font-semibold text-white bg-gradient-to-r from-green-600 to-green-700 rounded-xl hover:from-green-700 hover:to-green-800 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105"
+              >
+                <svg class="w-5 h-5 mr-2 group-hover:animate-bounce" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                </svg>
+                Envoyer le message
+              </button>
+            </form>
+          </div>
+        </div>
+
+        <!-- Informations de contact améliorées -->
+        <div class="lg:order-1 space-y-8">
+          <div>
+            <h2 class="text-3xl lg:text-4xl font-bold text-gray-900 mb-8">
+              Nos coordonnées
+            </h2>
+            
+            <div class="space-y-6">
+              <!-- Adresse -->
+              <div class="group flex items-start space-x-4 p-6 bg-gradient-to-r from-green-50 to-green-100 rounded-2xl border border-green-200 hover:shadow-lg transition-all duration-300">
+                <div class="w-14 h-14 bg-green-600 rounded-2xl flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform duration-300">
+                  <svg class="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                  </svg>
+                </div>
+                <div>
+                  <h3 class="text-xl font-bold text-gray-900 mb-2">Adresse</h3>
+                  <p class="text-gray-700 text-lg">
+                    II plateaux Cocody
+                    <br>
+                    Abidjan, Côte d'Ivoire
+                  </p>
+                </div>
+              </div>
+
+              <!-- Téléphone -->
+              <div class="group flex items-start space-x-4 p-6 bg-gradient-to-r from-blue-50 to-blue-100 rounded-2xl border border-blue-200 hover:shadow-lg transition-all duration-300">
+                <div class="w-14 h-14 bg-blue-600 rounded-2xl flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform duration-300">
+                  <svg class="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+                  </svg>
+                </div>
+                <div>
+                  <h3 class="text-xl font-bold text-gray-900 mb-2">Téléphone</h3>
+                  <div class="text-gray-700 text-lg space-y-2">
+                    <p>
+                      <a href="tel:+2250720200506" class="hover:text-blue-600 transition-colors duration-200 font-semibold">
+                        +225 07 20 20 05 06
+                      </a>
+                    </p>
+                    <p>
+                      <a href="tel:+2252731961575" class="hover:text-blue-600 transition-colors duration-200 font-semibold">
+                        +225 27 31 96 15 75
+                      </a>
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Email -->
+              <div class="group flex items-start space-x-4 p-6 bg-gradient-to-r from-purple-50 to-purple-100 rounded-2xl border border-purple-200 hover:shadow-lg transition-all duration-300">
+                <div class="w-14 h-14 bg-purple-600 rounded-2xl flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform duration-300">
+                  <svg class="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                  </svg>
+                </div>
+                <div>
+                  <h3 class="text-xl font-bold text-gray-900 mb-2">Email</h3>
+                  <p class="text-gray-700 text-lg">
+                    <a href="mailto:contact@mmbagrofarm.com" class="hover:text-purple-600 transition-colors duration-200 font-semibold">
+                      contact@mmbagrofarm.com
+                    </a>
+                  </p>
+                </div>
+              </div>
+
+              <!-- Horaires -->
+              <div class="group flex items-start space-x-4 p-6 bg-gradient-to-r from-orange-50 to-orange-100 rounded-2xl border border-orange-200 hover:shadow-lg transition-all duration-300">
+                <div class="w-14 h-14 bg-orange-600 rounded-2xl flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform duration-300">
+                  <svg class="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                  </svg>
+                </div>
+                <div>
+                  <h3 class="text-xl font-bold text-gray-900 mb-2">Horaires d'ouverture</h3>
+                  <div class="text-gray-700 text-lg space-y-1">
+                    <p class="font-semibold">Lundi - Vendredi : 6h00 - 14h00</p>
+                    <p class="font-semibold">Samedi : 6h00 - 12h00</p>
+                    <p class="font-semibold text-orange-600">Dimanche : Fermé</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Carte améliorée -->
+          <div>
+            <h3 class="text-2xl font-bold text-gray-900 mb-6">Notre localisation</h3>
+            <div class="aspect-video rounded-2xl overflow-hidden shadow-2xl border-4 border-white">
+              <iframe
+                src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d812.0466776530794!2d-4.501926361786437!3d7.071716129947424!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sfr!2sci!4v1758574884069!5m2!1sfr!2sci"
+                width="100%"
+                height="100%"
+                style="border:0;"
+                allowfullscreen=""
+                loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade"
+                title="Localisation MMB AgroFarm à Abidjan"
+              ></iframe>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ rapide améliorée -->
+  <section class="py-20 bg-gradient-to-br from-gray-50 to-gray-100">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <h2 class="text-4xl lg:text-5xl font-bold text-gray-900 mb-6">
+          Questions fréquentes
+        </h2>
+        <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+          Retrouvez les réponses aux questions les plus courantes sur nos services.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-6xl mx-auto">
+        <div class="group bg-white rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300 border border-gray-100 hover:border-green-200">
+          <div class="flex items-start space-x-4">
+            <div class="w-12 h-12 bg-green-100 rounded-xl flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform duration-300">
+              <svg class="w-6 h-6 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
+              </svg>
+            </div>
+            <div>
+              <h3 class="text-xl font-bold text-gray-900 mb-3">
+                Quels sont vos délais de livraison ?
+              </h3>
+              <p class="text-gray-600 leading-relaxed">
+                Nos délais de livraison varient selon votre localisation. 
+                Contactez-nous pour un devis personnalisé et des délais précis.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="group bg-white rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300 border border-gray-100 hover:border-green-200">
+          <div class="flex items-start space-x-4">
+            <div class="w-12 h-12 bg-blue-100 rounded-xl flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform duration-300">
+              <svg class="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" />
+              </svg>
+            </div>
+            <div>
+              <h3 class="text-xl font-bold text-gray-900 mb-3">
+                Proposez-vous des quantités minimales ?
+              </h3>
+              <p class="text-gray-600 leading-relaxed">
+                Nous adaptons nos conditionnements à vos besoins, 
+                du petit détail au gros volume selon vos exigences.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="group bg-white rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300 border border-gray-100 hover:border-green-200">
+          <div class="flex items-start space-x-4">
+            <div class="w-12 h-12 bg-purple-100 rounded-xl flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform duration-300">
+              <svg class="w-6 h-6 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>
+            </div>
+            <div>
+              <h3 class="text-xl font-bold text-gray-900 mb-3">
+                Comment garantir la fraîcheur ?
+              </h3>
+              <p class="text-gray-600 leading-relaxed">
+                Nos produits sont cultivés sur place et récoltés à maturité optimale 
+                pour garantir une fraîcheur exceptionnelle.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="group bg-white rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300 border border-gray-100 hover:border-green-200">
+          <div class="flex items-start space-x-4">
+            <div class="w-12 h-12 bg-orange-100 rounded-xl flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform duration-300">
+              <svg class="w-6 h-6 text-orange-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>
+            </div>
+            <div>
+              <h3 class="text-xl font-bold text-gray-900 mb-3">
+                Acceptez-vous les commandes urgentes ?
+              </h3>
+              <p class="text-gray-600 leading-relaxed">
+                Oui, nous pouvons traiter les commandes urgentes 
+                selon nos disponibilités et votre localisation.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="text-center mt-12">
+        <a
+          href="/faq"
+          class="group inline-flex items-center justify-center px-8 py-4 text-lg font-semibold text-green-600 border-2 border-green-600 rounded-xl hover:bg-green-600 hover:text-white transition-all duration-300 hover:scale-105"
+        >
+          Voir toutes les questions
+          <svg class="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+          </svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  
+
+  <Footer />
+</Layout>
+
+<style>
+  /* Animations personnalisées */
+  .animate-fade-in {
+    animation: fadeIn 1s ease-out;
+  }
+
+  .animate-slide-up {
+    animation: slideUp 1s ease-out;
+  }
+
+  .animate-slide-up-delay {
+    animation: slideUp 1s ease-out 0.2s both;
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+
+  @keyframes slideUp {
+    from {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  /* Amélioration des focus states */
+  input:focus, textarea:focus, select:focus {
+    outline: none;
+    box-shadow: 0 0 0 4px rgba(34, 197, 94, 0.1);
+  }
+
+  /* Animation pour les cartes FAQ */
+  .group:hover .group-hover\:scale-110 {
+    transform: scale(1.1);
+  }
+</style>
+
+<script>
+  // Gestion du formulaire de contact améliorée
+  const contactForm = document.getElementById('contact-form') as HTMLFormElement;
+  
+  if (contactForm) {
+    // Animation des champs au focus
+    const inputs = contactForm.querySelectorAll('input, textarea, select');
+    inputs.forEach(input => {
+      input.addEventListener('focus', function(this: HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement) {
+        const parent = this.parentElement as HTMLElement;
+        if (parent) {
+          parent.classList.add('ring-4', 'ring-green-100');
+        }
+      });
+      
+      input.addEventListener('blur', function(this: HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement) {
+        const parent = this.parentElement as HTMLElement;
+        if (parent) {
+          parent.classList.remove('ring-4', 'ring-green-100');
+        }
+      });
+    });
+
+    contactForm.addEventListener('submit', function(e) {
+      e.preventDefault();
+      
+      // Récupération des données du formulaire
+      const formData = new FormData(contactForm as HTMLFormElement);
+      const data = Object.fromEntries(formData);
+      
+      // Simulation d'envoi (à remplacer par votre logique d'envoi)
+      console.log('Données du formulaire:', data);
+      
+      // Animation de succès
+      const submitButton = this.querySelector('button[type="submit"]') as HTMLButtonElement;
+      if (submitButton) {
+        const originalText = submitButton.innerHTML;
+        
+        submitButton.innerHTML = `
+          <svg class="w-5 h-5 mr-2 animate-spin" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
+          </svg>
+          Envoi en cours...
+        `;
+        submitButton.disabled = true;
+        
+        // Simulation d'envoi
+        setTimeout(() => {
+          // Affichage d'un message de confirmation
+          alert('Merci pour votre message ! Nous vous répondrons dans les plus brefs délais.');
+          
+          // Réinitialisation du formulaire
+          (contactForm as HTMLFormElement).reset();
+          
+          // Restauration du bouton
+          submitButton.innerHTML = originalText;
+          submitButton.disabled = false;
+        }, 2000);
+      }
+    });
+  }
+
+  // Animation au scroll pour les éléments
+  const observerOptions = {
+    threshold: 0.1,
+    rootMargin: '0px 0px -50px 0px'
+  };
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const target = entry.target as HTMLElement;
+        target.style.opacity = '1';
+        target.style.transform = 'translateY(0)';
+      }
+    });
+  }, observerOptions);
+
+  // Observer les éléments à animer
+  document.addEventListener('DOMContentLoaded', () => {
+    const animatedElements = document.querySelectorAll('.group');
+    animatedElements.forEach(el => {
+      const element = el as HTMLElement;
+      element.style.opacity = '0';
+      element.style.transform = 'translateY(20px)';
+      element.style.transition = 'opacity 0.6s ease-out, transform 0.6s ease-out';
+      observer.observe(el);
+    });
+  });
+</script>

@@ -1,0 +1,167 @@
+---
+const currentPath = Astro.url.pathname;
+
+const navItems = [
+  { href: "/", label: "Accueil" },
+  { href: "/produits", label: "Nos Produits" },
+  { href: "/a-propos", label: "À Propos" },
+  { href: "/contact", label: "Contact" }
+];
+---
+
+<header class="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-sm border-b border-gray-200">
+  <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex justify-between items-center h-16 lg:h-20">
+      <!-- Logo -->
+      <div class="flex items-center">
+        <a href="/" class="flex items-center">
+          <img src="/logo-mmb-agro-farm.png" alt="MMB AgroFarm" class="h-20 w-auto" />
+        </a>
+      </div>
+
+      <!-- Navigation Desktop -->
+      <nav class="hidden md:flex items-center space-x-8">
+        {navItems.map((item) => (
+          <a
+            href={item.href}
+            class={`text-sm font-medium transition-colors duration-200 hover:text-green-600 ${
+              currentPath === item.href ? "text-green-600" : "text-gray-700"
+            }`}
+          >
+            {item.label}
+          </a>
+        ))}
+      </nav>
+
+      <!-- CTA Desktop -->
+      <div class="hidden md:flex items-center space-x-4">
+        <!-- Panier -->
+        <a
+          href="/panier"
+          class="relative inline-flex items-center px-4 py-2 text-gray-700 hover:text-green-600 bg-gray-50 hover:bg-green-50 border border-gray-200 hover:border-green-200 rounded-lg transition-all duration-200 shadow-sm hover:shadow-md"
+          title="Panier"
+        >
+          <i class="fas fa-shopping-cart text-lg mr-2"></i>
+          <span class="text-sm font-medium">Panier</span>
+          <!-- Indicateur de quantité -->
+          <span id="cart-indicator" class="absolute -top-1 -right-1 hidden">
+            <span id="cart-count" class="inline-flex items-center justify-center px-2 py-1 text-xs font-bold leading-none text-white bg-red-500 rounded-full"></span>
+          </span>
+        </a>
+        
+        <a
+          href="/contact"
+          class="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-lg text-white bg-green-600 hover:bg-green-700 transition-colors duration-200"
+        >
+          Nous contacter
+        </a>
+      </div>
+
+      <!-- Mobile menu button -->
+      <div class="md:hidden">
+        <button
+          id="mobile-menu-button"
+          class="text-gray-700 hover:text-green-600 transition-colors duration-200"
+          aria-label="Menu"
+        >
+          <svg class="w-6 h-6 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile Navigation -->
+    <div id="mobile-menu" class="hidden md:hidden">
+      <div class="px-2 pt-2 pb-3 space-y-1 bg-white border-t border-gray-200">
+        {navItems.map((item) => (
+          <a
+            href={item.href}
+            class={`block px-3 py-2 text-base font-medium rounded-md transition-colors duration-200 ${
+              currentPath === item.href
+                ? "text-green-600 bg-green-50"
+                : "text-gray-700 hover:text-green-600 hover:bg-gray-50"
+            }`}
+          >
+            {item.label}
+          </a>
+        ))}
+        
+        <!-- Panier Mobile -->
+        <a
+          href="/panier"
+          class="flex items-center px-3 py-2 text-base font-medium text-gray-700 hover:text-green-600 hover:bg-gray-50 rounded-md transition-colors duration-200"
+        >
+          <i class="fas fa-shopping-cart mr-2"></i>
+          Panier
+          <span id="cart-indicator-mobile" class="ml-auto hidden">
+            <span id="cart-count-mobile" class="inline-flex items-center justify-center px-2 py-1 text-xs font-bold leading-none text-white bg-red-500 rounded-full"></span>
+          </span>
+        </a>
+        
+        <a
+          href="/contact"
+          class="block px-3 py-2 mt-4 text-base font-medium text-white bg-green-600 rounded-md hover:bg-green-700 transition-colors duration-200"
+        >
+          Nous contacter
+        </a>
+      </div>
+    </div>
+  </div>
+</header>
+
+<script>
+  // Mobile menu toggle
+  const mobileMenuButton = document.getElementById('mobile-menu-button');
+  const mobileMenu = document.getElementById('mobile-menu');
+
+  if (mobileMenuButton && mobileMenu) {
+    mobileMenuButton.addEventListener('click', () => {
+      mobileMenu.classList.toggle('hidden');
+    });
+
+    // Close mobile menu when clicking on a link
+    const mobileLinks = mobileMenu.querySelectorAll('a');
+    mobileLinks.forEach(link => {
+      link.addEventListener('click', () => {
+        mobileMenu.classList.add('hidden');
+      });
+    });
+  }
+
+  // Fonction pour mettre à jour l'indicateur de panier
+  function updateCartIndicator() {
+    const cartIndicator = document.getElementById('cart-indicator');
+    const cartCount = document.getElementById('cart-count');
+    const cartIndicatorMobile = document.getElementById('cart-indicator-mobile');
+    const cartCountMobile = document.getElementById('cart-count-mobile');
+    
+    // Récupérer le panier depuis le localStorage
+    const cart = JSON.parse(localStorage.getItem('mmb-cart') || '[]');
+    const totalItems = cart.reduce((total, item) => total + item.quantite, 0);
+    
+    if (cartIndicator && cartCount) {
+      if (totalItems > 0) {
+        cartIndicator.classList.remove('hidden');
+        cartCount.textContent = totalItems.toString();
+      } else {
+        cartIndicator.classList.add('hidden');
+      }
+    }
+    
+    if (cartIndicatorMobile && cartCountMobile) {
+      if (totalItems > 0) {
+        cartIndicatorMobile.classList.remove('hidden');
+        cartCountMobile.textContent = totalItems.toString();
+      } else {
+        cartIndicatorMobile.classList.add('hidden');
+      }
+    }
+  }
+
+  // Mettre à jour l'indicateur au chargement de la page
+  document.addEventListener('DOMContentLoaded', updateCartIndicator);
+
+  // Écouter les changements dans le localStorage
+  window.addEventListener('storage', updateCartIndicator);
+</script>
