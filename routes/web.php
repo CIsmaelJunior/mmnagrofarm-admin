@@ -1,14 +1,30 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AuthController;
 
-// Route d'accueil - redirige vers le dashboard
-Route::get('/', function () {
-    return redirect()->route('dashboard');
+// Routes d'authentification (publiques)
+Route::middleware('guest')->group(function () {
+    Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login');
+    Route::post('/login', [AuthController::class, 'login']);
+    Route::get('/register', [AuthController::class, 'showRegisterForm'])->name('register');
+    Route::post('/register', [AuthController::class, 'register']);
+    Route::get('/forgot-password', [AuthController::class, 'showForgotPasswordForm'])->name('password.request');
+    Route::post('/forgot-password', [AuthController::class, 'sendResetLink'])->name('password.email');
 });
 
-// Route du tableau de bord
-Route::get('/dashboard', [App\Http\Controllers\DashboardController::class, 'index'])->name('dashboard');
+// Route de déconnexion
+Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
+
+// Routes protégées - nécessitent une authentification
+Route::middleware(['auth', 'admin.auth'])->group(function () {
+    // Route d'accueil - redirige vers le dashboard
+    Route::get('/', function () {
+        return redirect()->route('dashboard');
+    });
+
+    // Route du tableau de bord
+    Route::get('/dashboard', [App\Http\Controllers\DashboardController::class, 'index'])->name('dashboard');
 
 // Routes pour les produits
 Route::prefix('products')->name('products.')->group(function () {
@@ -42,17 +58,18 @@ Route::prefix('clients')->name('clients.')->group(function () {
     Route::delete('/{id}', [App\Http\Controllers\ClientController::class, 'destroy'])->name('destroy');
 });
 
-// Routes pour les paramètres
-Route::prefix('settings')->name('settings.')->group(function () {
-    Route::get('/', [App\Http\Controllers\SettingsController::class, 'index'])->name('index');
+    // Routes pour les paramètres
+    Route::prefix('settings')->name('settings.')->group(function () {
+        Route::get('/', [App\Http\Controllers\SettingsController::class, 'index'])->name('index');
 
-    Route::get('/profile', [App\Http\Controllers\SettingsController::class, 'profile'])->name('profile');
-    Route::put('/profile', [App\Http\Controllers\SettingsController::class, 'updateProfile'])->name('profile.update');
+        Route::get('/profile', [App\Http\Controllers\SettingsController::class, 'profile'])->name('profile');
+        Route::put('/profile', [App\Http\Controllers\SettingsController::class, 'updateProfile'])->name('profile.update');
 
-    Route::get('/system', [App\Http\Controllers\SettingsController::class, 'system'])->name('system');
-    Route::put('/system', [App\Http\Controllers\SettingsController::class, 'updateSystem'])->name('system.update');
+        Route::get('/system', [App\Http\Controllers\SettingsController::class, 'system'])->name('system');
+        Route::put('/system', [App\Http\Controllers\SettingsController::class, 'updateSystem'])->name('system.update');
 
-    Route::get('/notifications', [App\Http\Controllers\SettingsController::class, 'notifications'])->name('notifications');
-    Route::put('/notifications', [App\Http\Controllers\SettingsController::class, 'updateNotifications'])->name('notifications.update');
+        Route::get('/notifications', [App\Http\Controllers\SettingsController::class, 'notifications'])->name('notifications');
+        Route::put('/notifications', [App\Http\Controllers\SettingsController::class, 'updateNotifications'])->name('notifications.update');
+    });
 });
 
