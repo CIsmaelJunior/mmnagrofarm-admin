@@ -17,7 +17,7 @@ Route::middleware('guest')->group(function () {
 Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 
 // Routes protégées - nécessitent une authentification
-Route::middleware(['auth', 'admin.auth'])->group(function () {
+Route::middleware(['auth'])->group(function () {
     // Route d'accueil - redirige vers le dashboard
     Route::get('/', function () {
         return redirect()->route('dashboard');

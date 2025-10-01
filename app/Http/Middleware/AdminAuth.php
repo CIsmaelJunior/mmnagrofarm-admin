@@ -18,14 +18,7 @@ class AdminAuth
     {
         // Vérifier si l'utilisateur est authentifié
         if (!Auth::check()) {
-            // Rediriger vers la page de connexion avec l'URL demandée
             return redirect()->route('login')->with('error', 'Vous devez être connecté pour accéder à cette page.');
-        }
-
-        // Vérifier si la session est valide
-        if (!$request->session()->has('login_web_' . sha1(Auth::getDefaultDriver()))) {
-            Auth::logout();
-            return redirect()->route('login')->with('error', 'Votre session a expiré. Veuillez vous reconnecter.');
         }
 
         // Vérifier l'activité récente (optionnel - pour plus de sécurité)
