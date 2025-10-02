@@ -20,63 +20,34 @@ Route::middleware('guest')->group(function () {
 // Route de déconnexion admin
 Route::post('/admin/logout', [AuthController::class, 'logout'])->name('logout');
 
-// Routes pour les assets Astro (CSS, JS, images)
-Route::get('/_astro/{path}', function ($path) {
-    $assetPath = base_path("dist/_astro/{$path}");
-    if (file_exists($assetPath)) {
-        $mimeType = match(pathinfo($assetPath, PATHINFO_EXTENSION)) {
-            'css' => 'text/css',
-            'js' => 'application/javascript',
-            'png' => 'image/png',
-            'jpg', 'jpeg' => 'image/jpeg',
-            'svg' => 'image/svg+xml',
-            'woff' => 'font/woff',
-            'woff2' => 'font/woff2',
-            default => 'application/octet-stream'
-        };
-        return response()->file($assetPath, ['Content-Type' => $mimeType]);
-    }
-    return response('Asset not found', 404);
-})->where('path', '.*');
+// Routes publiques du site Astro
+Route::get('/', function () {
+    // Servir le fichier index.html d'Astro
+    return response()->file(base_path('dist/index.html'));
+})->name('home');
 
-// Routes pour les autres assets (images, etc.)
+// Routes catch-all pour Astro (SPA routing)
 Route::get('/{path}', function ($path) {
     // Vérifier si c'est une route admin
     if (str_starts_with($path, 'admin/')) {
         return redirect()->route('login');
     }
 
-    // Vérifier si c'est un fichier asset
-    $assetPath = base_path("dist/{$path}");
-    if (file_exists($assetPath) && is_file($assetPath)) {
-        $mimeType = match(pathinfo($assetPath, PATHINFO_EXTENSION)) {
-            'css' => 'text/css',
-            'js' => 'application/javascript',
-            'png' => 'image/png',
-            'jpg', 'jpeg' => 'image/jpeg',
-            'svg' => 'image/svg+xml',
-            'ico' => 'image/x-icon',
-            'xml' => 'application/xml',
-            'txt' => 'text/plain',
-            default => 'application/octet-stream'
-        };
-        return response()->file($assetPath, ['Content-Type' => $mimeType]);
+    // Vérifier si le fichier Astro existe
+    $astroPath = base_path("dist/{$path}");
+    if (file_exists($astroPath) && is_file($astroPath)) {
+        return response()->file($astroPath);
     }
 
     // Pour les routes SPA d'Astro, servir index.html
     $indexPath = base_path('dist/index.html');
     if (file_exists($indexPath)) {
-        return response()->file($indexPath, ['Content-Type' => 'text/html']);
+        return response()->file($indexPath);
     }
 
     // Fallback
-    return response()->file(base_path('dist/index.html'), ['Content-Type' => 'text/html']);
+    return response()->file(base_path('dist/index.html'));
 })->where('path', '.*');
-
-// Route d'accueil
-Route::get('/', function () {
-    return response()->file(base_path('dist/index.html'), ['Content-Type' => 'text/html']);
-})->name('home');
 
 // ========================================
 // ROUTES ADMIN - PROTÉGÉES
