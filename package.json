@@ -4,17 +4,7 @@
     "type": "module",
     "scripts": {
         "build": "vite build",
-        "dev": "vite",
-        "astro:dev": "astro dev",
-        "astro:build": "astro build",
-        "astro:preview": "astro preview",
-        "dev:all": "concurrently \"npm run dev\" \"npm run astro:dev\"",
-        "build:all": "npm run build && npm run astro:build"
-    },
-    "dependencies": {
-        "@tailwindcss/vite": "^4.1.12",
-        "astro": "^5.13.4",
-        "tailwindcss": "^4.1.12"
+        "dev": "vite"
     },
     "devDependencies": {
         "axios": "^1.11.0",

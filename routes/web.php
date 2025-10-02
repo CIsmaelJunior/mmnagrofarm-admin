@@ -3,59 +3,22 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 
-// ========================================
-// ROUTES PUBLIQUES - SITE ASTRO
-// ========================================
-
-// Routes d'authentification admin (publiques)
+// Routes d'authentification (publiques)
 Route::middleware('guest')->group(function () {
-    Route::get('/admin/login', [AuthController::class, 'showLoginForm'])->name('login');
-    Route::post('/admin/login', [AuthController::class, 'login']);
-    Route::get('/admin/register', [AuthController::class, 'showRegisterForm'])->name('register');
-    Route::post('/admin/register', [AuthController::class, 'register']);
-    Route::get('/admin/forgot-password', [AuthController::class, 'showForgotPasswordForm'])->name('password.request');
-    Route::post('/admin/forgot-password', [AuthController::class, 'sendResetLink'])->name('password.email');
+    Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login');
+    Route::post('/login', [AuthController::class, 'login']);
+    Route::get('/register', [AuthController::class, 'showRegisterForm'])->name('register');
+    Route::post('/register', [AuthController::class, 'register']);
+    Route::get('/forgot-password', [AuthController::class, 'showForgotPasswordForm'])->name('password.request');
+    Route::post('/forgot-password', [AuthController::class, 'sendResetLink'])->name('password.email');
 });
 
-// Route de déconnexion admin
-Route::post('/admin/logout', [AuthController::class, 'logout'])->name('logout');
-
-// Routes publiques du site Astro
-Route::get('/', function () {
-    // Servir le fichier index.html d'Astro
-    return response()->file(base_path('dist/index.html'));
-})->name('home');
-
-// Routes catch-all pour Astro (SPA routing)
-Route::get('/{path}', function ($path) {
-    // Vérifier si c'est une route admin
-    if (str_starts_with($path, 'admin/')) {
-        return redirect()->route('login');
-    }
-
-    // Vérifier si le fichier Astro existe
-    $astroPath = base_path("dist/{$path}");
-    if (file_exists($astroPath) && is_file($astroPath)) {
-        return response()->file($astroPath);
-    }
-
-    // Pour les routes SPA d'Astro, servir index.html
-    $indexPath = base_path('dist/index.html');
-    if (file_exists($indexPath)) {
-        return response()->file($indexPath);
-    }
-
-    // Fallback
-    return response()->file(base_path('dist/index.html'));
-})->where('path', '.*');
-
-// ========================================
-// ROUTES ADMIN - PROTÉGÉES
-// ========================================
+// Route de déconnexion
+Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 
 // Routes protégées - nécessitent une authentification
-Route::prefix('admin')->middleware(['auth'])->group(function () {
-    // Route d'accueil admin - redirige vers le dashboard
+Route::middleware(['auth'])->group(function () {
+    // Route d'accueil - redirige vers le dashboard
     Route::get('/', function () {
         return redirect()->route('dashboard');
     });
