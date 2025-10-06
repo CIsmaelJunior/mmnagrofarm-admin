@@ -77,6 +77,48 @@
       box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
     }
 
+    /* Avatar avec image */
+    .avatar img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 50%;
+    }
+
+    /* Avatar XL pour la page de profil */
+    .avatar-xl {
+      width: 120px;
+      height: 120px;
+    }
+
+    /* Bouton caméra sur l'avatar */
+    .avatar-camera-btn {
+      transition: all 0.3s ease;
+      opacity: 0.9;
+      cursor: pointer;
+      z-index: 10;
+    }
+
+    .avatar-camera-btn:hover {
+      opacity: 1;
+      transform: scale(1.1);
+      background-color: #5a67d8 !important;
+    }
+
+    .avatar-camera-btn svg {
+      pointer-events: none;
+    }
+
+    /* Amélioration de l'avatar */
+    .avatar {
+      border: 3px solid #fff;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    }
+
+    .avatar:hover {
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+    }
+
     /* Version mobile */
     @media (max-width: 576px) {
       .avatar-sm {

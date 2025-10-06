@@ -42,11 +42,15 @@
     <li class="nav-item dropdown pe-2 d-flex align-items-center">
         <a href="javascript:;" class="nav-link text-body p-0" id="dropdownMenuUser" data-bs-toggle="dropdown" aria-expanded="false">
             <div class="d-flex align-items-center">
-                <div class="avatar avatar-sm bg-gradient-primary me-2">
-                    <span class="text-white font-weight-bold">
-                        {{ Auth::user()->initials }}
-                    </span>
-                </div>
+                @if(Auth::user()->hasAvatar())
+                    <img src="{{ Auth::user()->avatar_url }}" alt="Avatar" class="avatar avatar-sm me-2" style="object-fit: cover;">
+                @else
+                    <div class="avatar avatar-sm bg-gradient-primary me-2">
+                        <span class="text-white font-weight-bold">
+                            {{ Auth::user()->initials }}
+                        </span>
+                    </div>
+                @endif
                 <div class="d-none d-sm-block">
                     <span class="text-body font-weight-bold">{{ Auth::user()->name }}</span>
                     <small class="text-muted d-block">{{ Auth::user()->role }}</small>
