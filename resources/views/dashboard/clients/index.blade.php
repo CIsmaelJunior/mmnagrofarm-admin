@@ -1,6 +1,33 @@
 @extends('dashboard.layouts.master')
 
 @section('content')
+<style>
+/* Amélioration des boutons d'actions */
+.actions-buttons {
+    gap: 0.25rem;
+}
+
+.actions-buttons .btn {
+    font-size: 0.75rem;
+    min-width: 60px;
+}
+
+.actions-buttons .btn i {
+    font-size: 0.7rem;
+}
+
+/* Responsive pour les boutons */
+@media (max-width: 768px) {
+    .actions-buttons .btn span {
+        display: none !important;
+    }
+
+    .actions-buttons .btn {
+        min-width: 35px;
+        padding: 0.25rem 0.5rem;
+    }
+}
+</style>
 <!-- Statistiques des clients -->
 <div class="row mb-4">
     <div class="col-lg-3 col-sm-6 mb-xl-0 mb-4">
@@ -186,15 +213,18 @@
                                     <small class="text-secondary">{{ $client->created_at->format('H:i') }}</small>
                                 </td>
                                 <td class="align-middle">
-                                    <div class="d-flex justify-content-center gap-1">
-                                        <a href="{{ route('clients.show', $client->id) }}" class="btn btn-outline-info btn-sm px-2 py-1" data-bs-toggle="tooltip" title="Voir les détails">
-                                            <i class="fas fa-eye text-xs"></i>
+                                    <div class="d-flex justify-content-center actions-buttons flex-wrap">
+                                        <a href="{{ route('clients.show', $client->id) }}" class="btn btn-outline-info btn-sm px-3 py-1" data-bs-toggle="tooltip" title="Voir les détails du client">
+                                            <i class="fas fa-eye me-1"></i>
+                                            <span class="d-none d-md-inline">Voir</span>
                                         </a>
-                                        <a href="{{ route('clients.edit', $client->id) }}" class="btn btn-outline-warning btn-sm px-2 py-1" data-bs-toggle="tooltip" title="Modifier">
-                                            <i class="fas fa-edit text-xs"></i>
+                                        <a href="{{ route('clients.edit', $client->id) }}" class="btn btn-outline-warning btn-sm px-3 py-1" data-bs-toggle="tooltip" title="Modifier les informations du client">
+                                            <i class="fas fa-edit me-1"></i>
+                                            <span class="d-none d-md-inline">Modifier</span>
                                         </a>
-                                        <button type="button" class="btn btn-outline-danger btn-sm px-2 py-1" data-bs-toggle="modal" data-bs-target="#deleteModal{{ $client->id }}" title="Supprimer">
-                                            <i class="fas fa-trash text-xs"></i>
+                                        <button type="button" class="btn btn-outline-danger btn-sm px-3 py-1" data-bs-toggle="modal" data-bs-target="#deleteModal{{ $client->id }}" title="Supprimer le client">
+                                            <i class="fas fa-trash me-1"></i>
+                                            <span class="d-none d-md-inline">Supprimer</span>
                                         </button>
                                     </div>
                                 </td>
@@ -274,4 +304,15 @@
     </div>
 </div>
 @endforeach
+
+<script>
+// Initialiser les tooltips Bootstrap
+document.addEventListener('DOMContentLoaded', function() {
+    // Initialiser tous les tooltips (Bootstrap 5)
+    var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
+    var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+        return new bootstrap.Tooltip(tooltipTriggerEl);
+    });
+});
+</script>
 @endsection

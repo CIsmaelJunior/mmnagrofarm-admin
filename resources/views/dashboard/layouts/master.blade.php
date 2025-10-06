@@ -16,6 +16,7 @@
   <link href="{{ asset('adm/css/nucleo-icons.css') }}" rel="stylesheet" />
   <link href="{{ asset('adm/css/nucleo-svg.css') }}" rel="stylesheet" />
   <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
   <script src="https://kit.fontawesome.com/42d5adcbca.js" crossorigin="anonymous"></script>
   <link href="{{ asset('adm/css/nucleo-svg.css') }}" rel="stylesheet" />
   <!-- CSS Files -->
