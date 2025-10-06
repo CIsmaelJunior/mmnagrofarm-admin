@@ -119,6 +119,51 @@
       box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
     }
 
+    /* Logo de la sidebar */
+    .sidenav-header .navbar-brand {
+      padding: 1.5rem 0.5rem;
+    }
+
+    .sidenav-header .navbar-brand img {
+      transition: all 0.3s ease;
+      filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
+      height: 80px !important;
+      width: auto !important;
+      max-height: none !important;
+      max-width: none !important;
+    }
+
+    .sidenav-header .navbar-brand:hover img {
+      transform: scale(1.05);
+      filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.15));
+    }
+
+    /* Couleurs harmonieuses pour MMB Agro Farm */
+    :root {
+      --mmb-primary: #75cb0c;
+      --mmb-primary-border: #5a9a0a;
+      --mmb-primary-light: #8dd83c;
+      --mmb-primary-dark: #4a7a08;
+    }
+
+    /* Bordures harmonieuses */
+    .btn-primary {
+      border-color: var(--mmb-primary-border) !important;
+    }
+
+    .btn-primary:hover {
+      border-color: var(--mmb-primary-dark) !important;
+    }
+
+    .border-primary {
+      border-color: var(--mmb-primary-border) !important;
+    }
+
+    .form-control:focus {
+      border-color: var(--mmb-primary-border) !important;
+      box-shadow: 0 0 0 0.2rem rgba(117, 203, 12, 0.25) !important;
+    }
+
     /* Version mobile */
     @media (max-width: 576px) {
       .avatar-sm {
@@ -279,7 +324,7 @@
             tension: 0.4,
             borderWidth: 0,
             pointRadius: 0,
-            borderColor: "#cb0c9f",
+            borderColor: "#75cb0c",
             borderWidth: 3,
             backgroundColor: gradientStroke1,
             fill: true,

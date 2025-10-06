@@ -1,8 +1,7 @@
 <div class="sidenav-header">
     <i class="fas fa-times p-3 cursor-pointer text-secondary opacity-5 position-absolute end-0 top-0 d-none d-xl-none" aria-hidden="true" id="iconSidenav"></i>
-    <a class="navbar-brand m-0" href="{{ route('dashboard') }}">
-    <img src="{{ asset('adm/img/logos/logo.png') }}" class="navbar-brand-img h-100" alt="MMB Agro Farm Logo">
-    <span class="ms-1 font-weight-bold">MMB AgroFarm Admin</span>
+    <a class="navbar-brand m-0 d-flex justify-content-center" href="{{ route('dashboard') }}">
+    <img src="{{ asset('adm/img/logos/logo.png') }}" class="navbar-brand-img" alt="MMB Agro Farm Logo" style="height: 80px !important; width: auto !important; max-height: none !important; max-width: none !important;">
     </a>
 </div>
 <hr class="horizontal dark mt-0">
