@@ -45,4 +45,49 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
+
+    /**
+     * Obtenir les initiales de l'utilisateur
+     */
+    public function getInitialsAttribute(): string
+    {
+        $nameParts = explode(' ', $this->name);
+        $initials = '';
+
+        if (count($nameParts) >= 2) {
+            $initials = strtoupper(substr($nameParts[0], 0, 1) . substr($nameParts[1], 0, 1));
+        } else {
+            $initials = strtoupper(substr($this->name, 0, 2));
+        }
+
+        return $initials;
+    }
+
+    /**
+     * Obtenir le prénom de l'utilisateur
+     */
+    public function getFirstNameAttribute(): string
+    {
+        $nameParts = explode(' ', $this->name);
+        return $nameParts[0] ?? $this->name;
+    }
+
+    /**
+     * Obtenir le nom de famille de l'utilisateur
+     */
+    public function getLastNameAttribute(): string
+    {
+        $nameParts = explode(' ', $this->name);
+        return count($nameParts) > 1 ? end($nameParts) : '';
+    }
+
+    /**
+     * Obtenir le rôle de l'utilisateur
+     */
+    public function getRoleAttribute(): string
+    {
+        // Pour l'instant, tous les utilisateurs sont administrateurs
+        // Vous pouvez ajouter une logique plus complexe ici
+        return 'Administrateur';
+    }
 }

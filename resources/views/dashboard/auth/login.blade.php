@@ -1,17 +1,13 @@
 <!--
 =========================================================
-* Soft UI Dashboard - v1.0.3
+* MMB Agro Farm - Administration Panel
 =========================================================
 
-* Product Page: https://www.creative-tim.com/product/soft-ui-dashboard
-* Copyright 2021 Creative Tim (https://www.creative-tim.com)
-* Licensed under MIT (https://www.creative-tim.com/license)
-
-* Coded by Creative Tim
+* Développé pour MMB Agro Farm
+* Copyright 2025 MMB Agro Farm
+* Tous droits réservés
 
 =========================================================
-
-* The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 -->
 <!DOCTYPE html>
 <html lang="en">
@@ -19,10 +15,10 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <link rel="apple-touch-icon" sizes="76x76" href="../assets/img/apple-icon.png">
-  <link rel="icon" type="image/png" href="../assets/img/favicon.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="../assets/img/logos/logo.png">
+  <link rel="icon" type="image/png" href="../assets/img/logos/logo.png">
   <title>
-    Soft UI Dashboard by Creative Tim
+    MMB Agro Farm - Connexion Admin
   </title>
   <!--     Fonts and icons     -->
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet" />
@@ -43,8 +39,9 @@
         <!-- Navbar -->
         <nav class="navbar navbar-expand-lg blur blur-rounded top-0 z-index-3 shadow position-absolute my-3 py-2 start-0 end-0 mx-4">
           <div class="container-fluid">
-            <a class="navbar-brand font-weight-bolder ms-lg-0 ms-3 " href="../pages/dashboard.html">
-              Soft UI Dashboard
+            <a class="navbar-brand font-weight-bolder ms-lg-0 ms-3 d-flex align-items-center" href="../pages/dashboard.html">
+              <img src="../assets/img/logos/logo.png" class="navbar-brand-img me-2" alt="MMB Agro Farm Logo" style="height: 32px;">
+              MMB Agro Farm
             </a>
             <button class="navbar-toggler shadow-none ms-2" type="button" data-bs-toggle="collapse" data-bs-target="#navigation" aria-controls="navigation" aria-expanded="false" aria-label="Toggle navigation">
               <span class="navbar-toggler-icon mt-2">
@@ -187,7 +184,7 @@
           <p class="mb-0 text-secondary">
             Copyright © <script>
               document.write(new Date().getFullYear())
-            </script> Soft by Creative Tim.
+            </script> MMB Agro Farm. Tous droits réservés.
           </p>
         </div>
       </div>

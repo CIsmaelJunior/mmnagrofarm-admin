@@ -5,10 +5,10 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <link rel="apple-touch-icon" sizes="76x76" href="{{ asset('adm/img/apple-icon.png') }}">
-  <link rel="icon" type="image/png" href="{{ asset('adm/img/favicon.png') }}">
+  <link rel="apple-touch-icon" sizes="76x76" href="{{ asset('adm/img/logos/logo.png') }}">
+  <link rel="icon" type="image/png" href="{{ asset('adm/img/logos/logo.png') }}">
   <title>
-    Soft UI Dashboard by Creative Tim
+    MMB Agro Farm - Administration
   </title>
   <!--     Fonts and icons     -->
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet" />
@@ -20,6 +20,93 @@
   <link href="{{ asset('adm/css/nucleo-svg.css') }}" rel="stylesheet" />
   <!-- CSS Files -->
   <link id="pagestyle" href="{{ asset('adm/css/soft-ui-dashboard.css?v=1.0.3') }}" rel="stylesheet" />
+  <style>
+    /* Styles personnalisés pour l'avatar utilisateur */
+    .avatar {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 14px;
+      font-weight: 600;
+      text-transform: uppercase;
+    }
+
+    .avatar-sm {
+      width: 32px;
+      height: 32px;
+      font-size: 12px;
+    }
+
+    .bg-gradient-primary {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    }
+
+    /* Amélioration du dropdown utilisateur */
+    .dropdown-menu {
+      border: none;
+      box-shadow: 0 10px 27px 0 rgba(0, 0, 0, 0.05);
+      border-radius: 15px;
+    }
+
+    .dropdown-item {
+      border-radius: 10px;
+      margin: 2px 8px;
+      transition: all 0.3s ease;
+    }
+
+    .dropdown-item:hover {
+      background-color: #f8f9fa;
+      transform: translateX(5px);
+    }
+
+    .dropdown-item.text-danger:hover {
+      background-color: #fff5f5;
+      color: #e53e3e !important;
+    }
+
+    /* Animation pour l'avatar */
+    .avatar {
+      transition: all 0.3s ease;
+    }
+
+    .avatar:hover {
+      transform: scale(1.1);
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    /* Version mobile */
+    @media (max-width: 576px) {
+      .avatar-sm {
+        width: 28px;
+        height: 28px;
+        font-size: 10px;
+      }
+
+      .dropdown-menu {
+        min-width: 280px;
+        margin-top: 10px;
+      }
+    }
+
+    /* Animation d'entrée pour le dropdown */
+    .dropdown-menu.show {
+      animation: slideIn 0.3s ease-out;
+    }
+
+    @keyframes slideIn {
+      from {
+        opacity: 0;
+        transform: translateY(-10px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+  </style>
 </head>
 
 <body class="g-sidenav-show  bg-gray-100">

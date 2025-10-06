@@ -70,6 +70,10 @@ Route::middleware(['auth'])->group(function () {
 
         Route::get('/notifications', [App\Http\Controllers\SettingsController::class, 'notifications'])->name('notifications');
         Route::put('/notifications', [App\Http\Controllers\SettingsController::class, 'updateNotifications'])->name('notifications.update');
+
+        // Route pour le profil utilisateur
+        Route::get('/profile', [App\Http\Controllers\SettingsController::class, 'profile'])->name('profile');
+        Route::put('/profile', [App\Http\Controllers\SettingsController::class, 'updateProfile'])->name('profile.update');
     });
 });
 

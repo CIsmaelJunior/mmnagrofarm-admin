@@ -14,7 +14,8 @@
         <li class="breadcrumb-item text-sm text-dark active" aria-current="page">Paramètres</li>
     @endif
     </ol>
-    <h6 class="font-weight-bolder mb-0">
+    <h6 class="font-weight-bolder mb-0 d-flex align-items-center">
+        <img src="{{ asset('adm/img/logos/logo.png') }}" alt="MMB Agro Farm" class="me-2" style="height: 24px;">
         @if(request()->routeIs('dashboard'))
             Tableau de bord
         @elseif(request()->routeIs('products*'))
@@ -38,11 +39,79 @@
     </div>
     </div>
     <ul class="navbar-nav  justify-content-end">
-    <li class="nav-item d-flex align-items-center">
-        <a href="{{ route('settings.profile') }}" class="nav-link text-body font-weight-bold px-0">
-        <i class="fa fa-user me-sm-1"></i>
-        <span class="d-sm-inline d-none">Administrateur</span>
+    <li class="nav-item dropdown pe-2 d-flex align-items-center">
+        <a href="javascript:;" class="nav-link text-body p-0" id="dropdownMenuUser" data-bs-toggle="dropdown" aria-expanded="false">
+            <div class="d-flex align-items-center">
+                <div class="avatar avatar-sm bg-gradient-primary me-2">
+                    <span class="text-white font-weight-bold">
+                        {{ Auth::user()->initials }}
+                    </span>
+                </div>
+                <div class="d-none d-sm-block">
+                    <span class="text-body font-weight-bold">{{ Auth::user()->name }}</span>
+                    <small class="text-muted d-block">{{ Auth::user()->role }}</small>
+                </div>
+            </div>
         </a>
+        <ul class="dropdown-menu dropdown-menu-end px-2 py-3 me-sm-n4" aria-labelledby="dropdownMenuUser">
+            <li class="mb-2">
+                <a class="dropdown-item border-radius-md" href="{{ route('settings.profile') }}">
+                    <div class="d-flex py-1">
+                        <div class="my-auto">
+                            <i class="fas fa-user text-primary me-3"></i>
+                        </div>
+                        <div class="d-flex flex-column justify-content-center">
+                            <h6 class="text-sm font-weight-normal mb-1">
+                                Mon Profil
+                            </h6>
+                            <p class="text-xs text-secondary mb-0">
+                                Gérer mes informations
+                            </p>
+                        </div>
+                    </div>
+                </a>
+            </li>
+            <li class="mb-2">
+                <a class="dropdown-item border-radius-md" href="{{ route('settings.index') }}">
+                    <div class="d-flex py-1">
+                        <div class="my-auto">
+                            <i class="fas fa-cog text-warning me-3"></i>
+                        </div>
+                        <div class="d-flex flex-column justify-content-center">
+                            <h6 class="text-sm font-weight-normal mb-1">
+                                Paramètres
+                            </h6>
+                            <p class="text-xs text-secondary mb-0">
+                                Configuration du système
+                            </p>
+                        </div>
+                    </div>
+                </a>
+            </li>
+            <li>
+                <hr class="dropdown-divider">
+            </li>
+            <li>
+                <form method="POST" action="{{ route('logout') }}" class="d-inline">
+                    @csrf
+                    <button type="submit" class="dropdown-item border-radius-md text-danger">
+                        <div class="d-flex py-1">
+                            <div class="my-auto">
+                                <i class="fas fa-sign-out-alt me-3"></i>
+                            </div>
+                            <div class="d-flex flex-column justify-content-center">
+                                <h6 class="text-sm font-weight-normal mb-1">
+                                    Se déconnecter
+                                </h6>
+                                <p class="text-xs text-secondary mb-0">
+                                    Quitter l'administration
+                                </p>
+                            </div>
+                        </div>
+                    </button>
+                </form>
+            </li>
+        </ul>
     </li>
     <li class="nav-item d-xl-none ps-3 d-flex align-items-center">
         <a href="javascript:;" class="nav-link text-body p-0" id="iconNavbarSidenav">
@@ -51,11 +120,6 @@
             <i class="sidenav-toggler-line"></i>
             <i class="sidenav-toggler-line"></i>
         </div>
-        </a>
-    </li>
-    <li class="nav-item px-3 d-flex align-items-center">
-        <a href="{{ route('settings.index') }}" class="nav-link text-body p-0">
-        <i class="fa fa-cog fixed-plugin-button-nav cursor-pointer"></i>
         </a>
     </li>
     <li class="nav-item dropdown pe-2 d-flex align-items-center">
