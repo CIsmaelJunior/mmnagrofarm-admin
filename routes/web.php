@@ -3,6 +3,29 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 
+// Route pour servir le site frontend à la racine
+Route::get('/', function () {
+    $frontendPath = public_path('frontend/index.html');
+
+    if (file_exists($frontendPath)) {
+        return response()->file($frontendPath);
+    }
+
+    // Fallback vers la page de bienvenue Laravel si le frontend n'existe pas
+    return view('welcome');
+})->name('frontend');
+
+// Route pour servir les assets statiques du frontend (CSS, JS, images, etc.)
+Route::get('/assets/{path}', function ($path) {
+    $assetPath = public_path('frontend/assets/' . $path);
+
+    if (file_exists($assetPath)) {
+        return response()->file($assetPath);
+    }
+
+    return response('Asset not found', 404);
+})->where('path', '.*')->name('frontend.assets');
+
 // Routes d'authentification (publiques) - préfixées par admin/
 Route::prefix('admin')->group(function () {
     Route::middleware('guest')->group(function () {
